@@ -17,3 +17,4 @@
 vendor/ruby
 .redcar
 bin
+.DS_Store
