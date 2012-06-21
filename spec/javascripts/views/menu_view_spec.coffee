@@ -6,5 +6,5 @@ describe "MenuView", ->
       title: "Yummy food"
     @menuView.render()
   it "should render the menu into its element", ->
-    expect(@menuView.$el).toHaveText("Yummy food")
+    expect(@menuView.$el).toHaveText /Yummy food/
     
