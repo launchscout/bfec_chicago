@@ -1,1 +1,1 @@
-<%= @menu.title %>
+<%= @model.get("title") %>
