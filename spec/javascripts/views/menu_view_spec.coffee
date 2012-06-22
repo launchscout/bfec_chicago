@@ -6,4 +6,10 @@ describe "MenuView", ->
     @menuView.render()
   it "should render the menu into its element", ->
     expect(@menuView.$el).toHaveText /Yummy food/
+  describe "listening to model changes", ->
+    beforeEach ->
+      @menu.set(title: "Awful food")
+    it "should rerender the view", ->
+      expect(@menuView.$el).toHaveText /Awful food/
+  
     
