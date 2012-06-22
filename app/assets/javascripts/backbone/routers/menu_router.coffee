@@ -9,7 +9,8 @@ class Cookbook.Routers.MenuRouter extends Backbone.Router
     "menus/:id": "showMenu"
     
   showMenu: (id) ->
-    debugger
+    @menu.id = id
+    @menu.fetch()
     
 $ ->
   window.menuRouter = new Cookbook.Routers.MenuRouter()
