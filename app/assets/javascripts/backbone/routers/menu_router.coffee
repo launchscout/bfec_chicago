@@ -7,6 +7,7 @@ class Cookbook.Routers.MenuRouter extends Backbone.Router
     
   routes:
     "menus/:id": "showMenu"
+    "list" : "listMenus"
     
   showMenu: (id) ->
     @menu.id = id
