@@ -13,6 +13,7 @@ class Cookbook.Routers.MenuRouter extends Backbone.Router
     @menus.on "sync", (menu) => @navigate "menus/#{menu.id}", trigger: true
     
   routes:
+    "menus/new": "newMenu"
     "menus/:id/edit": "editMenu"
     "menus/:id": "showMenu"
     
@@ -22,6 +23,15 @@ class Cookbook.Routers.MenuRouter extends Backbone.Router
     @menuView.model = @menu
     @menuEditView.hide()
     @menuView.render()
+
+  newMenu:  ->
+    @menu = new Cookbook.Models.Menu
+    @menu.on "sync", =>
+      @menus.add(@menu)
+      @navigate "menus/#{@menu.id}", trigger: true
+    @menuEditView.model = @menu
+    @menuView.hide()
+    @menuEditView.render()
 
   editMenu: (id) ->
     @menu = @menus.get(id)

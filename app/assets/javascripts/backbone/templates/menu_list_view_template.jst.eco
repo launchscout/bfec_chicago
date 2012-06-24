@@ -1,5 +1,6 @@
-<ul class="nav nav-tabs nav-stacked">
+<ul class="nav nav-list">
   <% for menu in @collection.models: %>
   <li><a href="#menus/<%= menu.id %>"><%= menu.get("title") %></a></li>
 	<% end %>
 </ul>
+<a class="btn" href="#menus/new">New Menu</a>
