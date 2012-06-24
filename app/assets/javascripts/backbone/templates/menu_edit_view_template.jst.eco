@@ -1,0 +1,10 @@
+<form class="form-vertical">
+		<label for="title">Title</label>
+		<input name="title" value="<%- @model.get("title") %>" type="text"/>
+		<label for="description">Description</label>
+		<textarea name="description"><%- @model.get("description")%></textarea>
+	<div class="form-actions">
+		<input type="submit" class="btn primary" value="Save" />
+		<input type="button" class="btn" value="Cancel">
+	</div>
+</form>
