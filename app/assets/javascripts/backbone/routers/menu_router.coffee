@@ -10,6 +10,7 @@ class Cookbook.Routers.MenuRouter extends Backbone.Router
       el: $("#menu_list_view")
       collection: @menus
     @menus.fetch()
+    @menus.on "sync", (menu) => @navigate "menus/#{menu.id}", trigger: true
     
   routes:
     "menus/:id/edit": "editMenu"
