@@ -5,6 +5,7 @@ class Cookbook.Views.MenuListView extends Backbone.View
   constructor: ->
     super
     @collection.on "reset", => @render()
+    @collection.on "sync", => @render()
   
   render: ->
     @$el.html @template @
