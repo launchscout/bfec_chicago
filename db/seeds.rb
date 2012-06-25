@@ -7,4 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Menu.create! title: "A menu", description: "of yummy stuff"
 Menu.create! title: "Another menu", description: "of not so yummy stuff"
-Recipe.create! title: "Pancakes", description: "Super delish"
+recipe = Recipe.create! title: "Pancakes", description: "Super delish"
+recipe.ingredients.create! description: "Salt"
+recipe.ingredients.create! description: "More salt"
