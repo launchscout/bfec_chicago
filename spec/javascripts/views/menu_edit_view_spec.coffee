@@ -11,16 +11,28 @@ describe "EditMenuSpec", ->
 
   describe "saving", ->
     beforeEach ->
-      @menuEditView.render()
       @menuEditView.$("input[name=title]").val("the new title")
       @menuEditView.$("textarea[name=description]").val("the new description")
       @menuEditView.save(new jQuery.Event)
-      @request = mostRecentAjaxRequest()
-      @request.response
-        status: 200
-    it "should update the model", ->
-      expect(@menu.get("title")).toEqual "the new title"
-      expect(@menu.get("description")).toEqual "the new description"
-    it "posts to the backend", ->
-      expect(@request.method).toEqual "PUT"
-      expect(@request.url).toEqual "/menus/1"
+    describe "a successful response", ->
+      beforeEach ->
+        @request = mostRecentAjaxRequest()
+        @request.response
+          status: 200
+      it "should update the model", ->
+        expect(@menu.get("title")).toEqual "the new title"
+        expect(@menu.get("description")).toEqual "the new description"
+      it "posts to the backend", ->
+        expect(@request.method).toEqual "PUT"
+        expect(@request.url).toEqual "/menus/1"
+    describe "with an error", ->
+      beforeEach ->
+        @request = mostRecentAjaxRequest()
+        @request.response
+          status: 422
+          responseText: JSON.stringify
+            errors:
+              title: ["cannot be blank"]
+      it "marks the field as en error", ->
+        expect(@menuEditView.$("div.control-group:first")).toHaveClass "error"
+      
