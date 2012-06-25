@@ -1,0 +1,6 @@
+<ul class="nav nav-list">
+  <% for recipe in @collection.models: %>
+  <li><a href="#recipes/<%= recipe.id %>"><%= recipe.get("title") %></a></li>
+	<% end %>
+</ul>
+<a class="btn" href="#recipes/new">New Recipe</a>
