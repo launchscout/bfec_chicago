@@ -25,6 +25,7 @@ gem 'jquery-rails'
 gem "backtastic"
 gem "jasminerice"
 gem "inherited_resources"
+gem "jasmine-ajax"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
