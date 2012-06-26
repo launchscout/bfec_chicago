@@ -10,3 +10,7 @@ Menu.create! title: "Another menu", description: "of not so yummy stuff"
 recipe = Recipe.create! title: "Pancakes", description: "Super delish"
 recipe.ingredients.create! description: "Salt"
 recipe.ingredients.create! description: "More salt"
+
+Category.create! name: "Breakfast"
+Category.create! name: "Lunch"
+Category.create! name: "Dinner"
