@@ -11,3 +11,7 @@ Recipe.create! title: "Waffles", description: "Not bad"
 recipe = Recipe.create! title: "Pancakes", description: "Super delish"
 recipe.ingredients.create! description: "Salt"
 recipe.ingredients.create! description: "More salt"
+
+Category.create! name: "Breakfast"
+Category.create! name: "Lunch"
+Category.create! name: "Dinner"
