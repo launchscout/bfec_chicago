@@ -1,0 +1,2 @@
+<%= @model.get("title") %><br/>
+<a href="#recipes/<%= @model.id %>/edit">Edit</a>
