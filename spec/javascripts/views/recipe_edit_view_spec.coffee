@@ -1,26 +1,26 @@
-describe "EditMenuSpec", ->
+describe "EditRecipeSpec", ->
   beforeEach ->
     jasmine.Ajax.useMock()
-    setFixtures("<div id='menu_edit_view'></div>")
-    @menu = new Cookbook.Models.Menu(title: "Food", description: "It is delicious.", id: 1)
-    @menuEditView = new Cookbook.Views.MenuEditView(el: $("#menu_edit_view"), model: @menu)
-    @menuEditView.render()
+    setFixtures("<div id='recipe_edit_view'></div>")
+    @recipe = new Cookbook.Models.Recipe(title: "Food", description: "It is delicious.", id: 1)
+    @recipeEditView = new Cookbook.Views.RecipeEditView(el: $("#recipe_edit_view"), model: @recipe)
+    @recipeEditView.render()
   it "should have inputs", ->
-    expect(@menuEditView.$("input[name=title]").val()).toEqual @menu.get("title")
-    expect(@menuEditView.$("textarea[name=description]").val()).toEqual @menu.get("description")
+    expect(@recipeEditView.$("input[name=title]").val()).toEqual @recipe.get("title")
+    expect(@recipeEditView.$("textarea[name=description]").val()).toEqual @recipe.get("description")
 
   describe "saving", ->
     beforeEach ->
-      @menuEditView.render()
-      @menuEditView.$("input[name=title]").val("the new title")
-      @menuEditView.$("textarea[name=description]").val("the new description")
-      @menuEditView.save(new jQuery.Event)
+      @recipeEditView.render()
+      @recipeEditView.$("input[name=title]").val("the new title")
+      @recipeEditView.$("textarea[name=description]").val("the new description")
+      @recipeEditView.save(new jQuery.Event)
       @request = mostRecentAjaxRequest()
       @request.response
         status: 200
     it "should update the model", ->
-      expect(@menu.get("title")).toEqual "the new title"
-      expect(@menu.get("description")).toEqual "the new description"
+      expect(@recipe.get("title")).toEqual "the new title"
+      expect(@recipe.get("description")).toEqual "the new description"
     it "posts to the backend", ->
       expect(@request.method).toEqual "PUT"
-      expect(@request.url).toEqual "/menus/1"
+      expect(@request.url).toEqual "/recipes/1"
