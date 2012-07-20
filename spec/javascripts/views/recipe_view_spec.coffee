@@ -6,5 +6,5 @@ describe "RecipeView", ->
       title: "Yummy food"
     @recipeView.render()
   it "should render the recipe into its element", ->
-    expect(@recipeView.$el).toHaveText("Yummy food")
+    expect(@recipeView.$el).toHaveText /Yummy food/
     
