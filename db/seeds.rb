@@ -8,3 +8,4 @@
 Menu.create! title: "A menu", description: "of yummy stuff"
 Menu.create! title: "Another menu", description: "of not so yummy stuff"
 Recipe.create! title: "Pancakes", description: "Super delish"
+Recipe.create! title: "Waffles", description: "Not bad"
