@@ -1,0 +1,5 @@
+<ul>
+  <% for recipe in @collection.models: %>
+  <li><%= recipe.get("title") %></li>
+	<% end %>
+</ul>
