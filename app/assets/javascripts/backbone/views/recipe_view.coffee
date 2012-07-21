@@ -8,3 +8,8 @@ class Cookbook.Views.RecipeView extends Backbone.View
   
   render: ->
     @$el.html @template @
+    
+$ ->
+  recipe = new Cookbook.Models.Recipe(id: 1)
+  recipeView = new Cookbook.Views.RecipeView(model: recipe, el: $("#recipe_view"))
+  recipe.fetch()
