@@ -1,1 +1,1 @@
-<%= @recipe.title %>
+<%= @model.get("title") %>
