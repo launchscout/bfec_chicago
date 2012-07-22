@@ -1,1 +1,4 @@
-<%= @model.get("title") %>
+<dl>
+  <dt><%= @model.get("title") %></dt>
+  <dd><%= @model.get("description") %></dd>
+</dl>
