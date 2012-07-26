@@ -11,16 +11,30 @@ describe "EditRecipeSpec", ->
 
   describe "saving", ->
     beforeEach ->
-      @recipeEditView.render()
       @recipeEditView.$("input[name=title]").val("the new title")
       @recipeEditView.$("textarea[name=description]").val("the new description")
       @recipeEditView.save(new jQuery.Event)
-      @request = mostRecentAjaxRequest()
-      @request.response
-        status: 200
-    it "should update the model", ->
-      expect(@recipe.get("title")).toEqual "the new title"
-      expect(@recipe.get("description")).toEqual "the new description"
-    it "posts to the backend", ->
-      expect(@request.method).toEqual "PUT"
-      expect(@request.url).toEqual "/recipes/1"
+    describe "a successful response", ->
+      beforeEach ->
+        @request = mostRecentAjaxRequest()
+        @request.response
+          status: 200
+      it "should update the model", ->
+        expect(@recipe.get("title")).toEqual "the new title"
+        expect(@recipe.get("description")).toEqual "the new description"
+      it "posts to the backend", ->
+        expect(@request.method).toEqual "PUT"
+        expect(@request.url).toEqual "/recipes/1"
+    describe "with an error", ->
+      beforeEach ->
+        @request = mostRecentAjaxRequest()
+        @request.response
+          status: 422
+          responseText: JSON.stringify
+            errors:
+              title: ["cannot be blank"]
+      it "marks the field as error", ->
+        expect(@recipeEditView.$("div.control-group:first")).toHaveClass "error"
+      it "displays the error message", ->
+        expect(@recipeEditView.$("div.control-group:first span.help-inline")).toHaveText "cannot be blank"
+      
