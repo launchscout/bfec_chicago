@@ -10,6 +10,7 @@ class Cookbook.Routers.RecipeRouter extends Backbone.Router
       el: $("#recipe_list_view")
       collection: @recipes
     @recipes.fetch()
+    @recipes.on "sync", (recipe) => @navigate "recipes/#{recipe.id}", trigger: true
     
   routes:
     "recipes/:id/edit": "editRecipe"
