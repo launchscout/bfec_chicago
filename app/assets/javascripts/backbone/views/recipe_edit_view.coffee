@@ -2,6 +2,7 @@ class Cookbook.Views.RecipeEditView extends Backbone.View
   
   events:
     "click input[type=submit]": "save"
+    "click #delete": "destroy"
     
   template: JST["backbone/templates/recipe_edit_view_template"]
 
@@ -27,6 +28,10 @@ class Cookbook.Views.RecipeEditView extends Backbone.View
       description: @$("textarea[name=description]").val()
     @model.on "error", @handleErrors, @
     @model.save()
+    
+  destroy: (event) ->
+    event.preventDefault()
+    @model.destroy success: => @remove()
       
     
     
