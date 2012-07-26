@@ -32,6 +32,12 @@ class Cookbook.Views.RecipeEditView extends Backbone.View
   destroy: (event) ->
     event.preventDefault()
     @model.destroy success: => @remove()
+    
+  cancelLink: ->
+    if @model.isNew()
+      "#recipes"
+    else
+      "#recipes/#{@model.id}"
       
     
     

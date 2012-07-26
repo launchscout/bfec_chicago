@@ -16,6 +16,12 @@ class Cookbook.Routers.RecipeRouter extends Backbone.Router
     "recipes/new": "newRecipe"
     "recipes/:id/edit": "editRecipe"
     "recipes/:id": "showRecipe"
+    "recipes": "listRecipes"
+    
+  listRecipes: ->
+    @recipeView.hide()
+    @recipeEditView.hide()
+    @recipeListView.render()
     
   showRecipe: (id) ->
     @recipe = @recipes.get(id)

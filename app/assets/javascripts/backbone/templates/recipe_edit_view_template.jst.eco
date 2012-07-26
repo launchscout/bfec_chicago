@@ -9,7 +9,7 @@
 	</div>
 	<div class="form-actions">
 		<input type="submit" class="btn primary" value="Save" />
+    <a class="btn" href="<%= @cancelLink() %>">Cancel</a>
     <input type="button" class="btn" id="delete" value="Delete" />
-		<input type="button" class="btn" value="Cancel">
 	</div>
 </form>
