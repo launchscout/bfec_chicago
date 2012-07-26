@@ -6,6 +6,7 @@ class Cookbook.Views.RecipeListView extends Backbone.View
     super
     @collection.on "reset", => @render()
     @collection.on "sync", => @render()
+    @collection.on "add", => @render()
   
   render: ->
     @$el.html @template @

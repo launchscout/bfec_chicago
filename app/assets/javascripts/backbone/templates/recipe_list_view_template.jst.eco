@@ -3,3 +3,4 @@
   <li><a href="#recipes/<%= recipe.id %>"><%= recipe.get("title") %></a></li>
 	<% end %>
 </ul>
+<a class="btn" href="#recipes/new">New Recipe</a>

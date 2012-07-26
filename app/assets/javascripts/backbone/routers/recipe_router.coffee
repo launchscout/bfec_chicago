@@ -13,6 +13,7 @@ class Cookbook.Routers.RecipeRouter extends Backbone.Router
     @recipes.on "sync", (recipe) => @navigate "recipes/#{recipe.id}", trigger: true
     
   routes:
+    "recipes/new": "newRecipe"
     "recipes/:id/edit": "editRecipe"
     "recipes/:id": "showRecipe"
     
@@ -22,6 +23,15 @@ class Cookbook.Routers.RecipeRouter extends Backbone.Router
     @recipeView.model = @recipe
     @recipeEditView.hide()
     @recipeView.render()
+
+  newRecipe:  ->
+    @recipe = new Cookbook.Models.Recipe
+    @recipe.on "sync", =>
+      @recipes.add(@recipe)
+      @navigate "recipes/#{@recipe.id}", trigger: true
+    @recipeEditView.model = @recipe
+    @recipeView.hide()
+    @recipeEditView.render()
 
   editRecipe: (id) ->
     @recipe = @recipes.get(id)
