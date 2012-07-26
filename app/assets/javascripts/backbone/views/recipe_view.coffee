@@ -2,14 +2,13 @@ class Cookbook.Views.RecipeView extends Backbone.View
   
   constructor: ->
     super
-    @model.on "change", => @render()
+    @model.on("change", => @render()) if @model
     
   template: JST["backbone/templates/recipe_view_template"]
   
+  hide: -> @$el.hide()
+  
   render: ->
     @$el.html @template @
+    @$el.show()
     
-$ ->
-  recipe = new Cookbook.Models.Recipe(id: 1)
-  recipeView = new Cookbook.Views.RecipeView(model: recipe, el: $("#recipe_view"))
-  recipe.fetch()
