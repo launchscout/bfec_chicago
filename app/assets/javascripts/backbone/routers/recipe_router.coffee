@@ -4,6 +4,7 @@ class Cookbook.Routers.RecipeRouter extends Backbone.Router
     super
     @recipe = new Cookbook.Models.Recipe(id: 1)
     @recipes = new Cookbook.Collections.Recipes()
+    @categories = new Cookbook.Collections.Categories window.categoriesJson
     @recipeView = new Cookbook.Views.RecipeView(el: $("#recipe_view"))
     @recipeEditView = new Cookbook.Views.RecipeEditView(el: $("#recipe_edit_view"))
     @recipeListView = new Cookbook.Views.RecipeListView

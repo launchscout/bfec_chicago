@@ -6,5 +6,6 @@
 #= require backbone
 #= require backbone_rails_sync
 #= require backbone_datalink
+#= require supermodel
 #= require backbone/cookbook
 #= require_tree .
