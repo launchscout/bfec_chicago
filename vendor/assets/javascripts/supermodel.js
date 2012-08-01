@@ -121,6 +121,7 @@
     // If `source` is provided, use it to initialize the association after
     // removing it from the response object.
     parse: function(model, resp) {
+      if (!resp) return;
       if (!_.has(resp, this.source)) return;
       var attrs = resp[this.source];
       delete resp[this.source];
@@ -222,6 +223,7 @@
     // Use the `source` property to reset the collection with the given models
     // after removing it from the response object.
     parse: function(model, resp) {
+      if (!resp) return;
       var attrs = resp[this.source];
       if (!attrs) return;
       delete resp[this.source];
