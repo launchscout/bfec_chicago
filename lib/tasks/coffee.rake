@@ -10,16 +10,15 @@ def compile_file(file)
     f.puts require_lines.join("\n")
     f.puts CoffeeScript.compile(contents)
   end
-  # File.delete file
+  File.delete file unless ENV["KEEP_COFFEE"]
 end
 
 namespace :coffee do
 
   desc "Compile all the .coffee files in app/assets/javascripts"
   task compile_all: :environment do
-    FileList["app/assets/javascripts/**/*.coffee"].each do |file|
-      compile_file(file)
-    end
+    FileList["app/assets/javascripts/**/*.coffee"].each { |file| compile_file(file) }
+    FileList["spec/javascripts/**/*.coffee"].each { |file| compile_file(file) }
   end
 
   desc "Compile a coffeescript file"
