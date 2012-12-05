@@ -2,4 +2,9 @@
   <dt><%= @model.get("title") %></dt>
   <dd><%= @model.get("description") %></dd>
 </dl>
+<ul>
+<% for ingredient in @model.ingredients().models: %>
+  <li><%= ingredient.get("description") %></li>
+<% end %>
+</ul>
 <a href="#recipes/<%= @model.id%>/edit">Edit</a>
