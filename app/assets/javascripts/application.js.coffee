@@ -4,6 +4,7 @@
 #= require twitter/bootstrap
 #= require underscore
 #= require backbone
+#= require backtastic
 #= require backbone_rails_sync
 #= require backbone_datalink
 #= require backbone/cookbook
